@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,27 +33,7 @@ public class ApplicationController {
 		return "main";
 	}
 
-	@PostMapping("/users")
-	public String registerUser(@ModelAttribute User user, BindingResult bindingResult, HttpServletRequest request) {
-		User u = null;
-		
-		if(userService.findByUsername(user.getUsername())!=null) {
-			u = userService.findByUsername(user.getUsername());
-		}else {
-			u = new User();
-			u.setUsername("");
-		}
-		
-		if((user.getUsername().equals(u.getUsername()) && (user.getId() == 0 ))) {
-			request.setAttribute("error", "Username already exists");
-			request.setAttribute("mode", "MODE_REGISTER");
-			return "main";		
-		}else {
-			userService.saveMyUser(user);
-			request.setAttribute("mode", "MODE_HOME");
-			return "main";
-		}
-	}
+
 
 	@GetMapping("/findall")
 	public String showAllUsers(HttpServletRequest request) {
