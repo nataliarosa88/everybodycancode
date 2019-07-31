@@ -23,8 +23,8 @@ public class UserService {
 		this.userRepository=userRepository;
 	}
 	
-	public void saveMyUser(User user ) {
-		userRepository.save(user);
+	public User save(User user) {
+		return userRepository.save(user);
 	}
 	
 	public List<User> showAllUsers(){
@@ -58,7 +58,6 @@ public class UserService {
 		return user;
 	}
 	
-	
-	}
+}
 
 	
