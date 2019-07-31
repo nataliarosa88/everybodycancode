@@ -22,8 +22,9 @@ public class RestController {
 	@Autowired
 	private UserService userService;
 	
+
 	@PostMapping("/users")
-	public ResponseEntity<User> saveUser(@RequestBody User user) throws Exception {
+s	public ResponseEntity<User> saveUser(@RequestBody User user) throws Exception {
 		return ResponseEntity.ok(userService.save(user));
 	}
 	
